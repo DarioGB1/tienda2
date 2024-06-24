@@ -63,17 +63,16 @@ const Home = React.memo(({ productos, addtoCart }) => {
     const fetchBestSellingProducts = async () => {
         try {
             const ordersCollectionRef = collection(db, 'orders');
-        
             const ordersSnapshot = await getDocs(ordersCollectionRef);
             const productSales = {};
-    
+
             // Acumular las ventas por producto
             ordersSnapshot.forEach(orderDoc => {
                 const orderData = orderDoc.data();
                 orderData.products.forEach(product => {
                     const productId = product.productId;
                     const quantity = product.quantity;
-    
+
                     if (productId && quantity != null) {  // Asegurarse de que productId y quantity son válidos
                         if (!productSales[productId]) {
                             productSales[productId] = 0;
@@ -82,36 +81,42 @@ const Home = React.memo(({ productos, addtoCart }) => {
                     }
                 });
             });
-    
+
             // Crear lista de productos con cantidades vendidas
             const productList = Object.keys(productSales).map(productId => ({
                 productId,
                 quantitySold: productSales[productId]
             }));
-    
+
             // Ordenar por cantidad vendida
             productList.sort((a, b) => b.quantitySold - a.quantitySold);
+
+            // Seleccionar los 10 productos más vendidos
             const top10Products = productList.slice(0, 10);
-    
+            const additionalProducts = shuffleArray(productos.filter(p => !top10Products.map(product => product.productId).includes(p.id))).slice(0, 10);
+
             // Usar productos ya cargados si es posible
-            const bestSellingProductsData = top10Products.map(product => {
+            const combinedProducts = [...top10Products.map(product => {
                 const foundProduct = productos.find(p => p.id === product.productId);
-                if (foundProduct) {
-                    return { ...foundProduct, quantitySold: product.quantitySold };
-                }
-                return null;
-            }).filter(product => product !== null);
-    
-            // Establecer los productos más vendidos en el estado
-            setBestSellingProducts(bestSellingProductsData);
+                return foundProduct ? { ...foundProduct, quantitySold: product.quantitySold } : null;
+            }), ...additionalProducts].filter(product => product !== null);
+
+            setBestSellingProducts(combinedProducts);
         } catch (error) {
             console.error("Error fetching best selling products:", error);
             setError('Error loading best selling products data');
         }
         setLoading(false);
     };
-    
-    
+
+    // Función para mezclar los elementos de un arreglo al azar
+    function shuffleArray(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        return array;
+    }
     
 
     if (loading) {
