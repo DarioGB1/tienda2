@@ -85,21 +85,47 @@
 }
 
 @media (max-width: 600px) {
+    .tracking-container {
+        padding: 10px;
+        /* Reducir el padding */
+    }
+
+    .tracking-title {
+        font-size: 18px;
+        /* Reducir el tamaño del título */
+    }
+
+    .current-status,
+    .delivery-address {
+        font-size: 14px;
+        /* Reducir el tamaño de los subtítulos y direcciones */
+    }
+
     .timeline-item {
         flex-basis: 50%;
-        /* Aumenta el espacio para cada item de la línea del tiempo en pantallas pequeñas */
+        /* Ajustar la base de flexibilidad para mejor visibilidad */
+        min-width: 100px;
+        /* Reducir el mínimo ancho */
     }
 
-    .product-item {
-        flex-direction: column;
-        align-items: flex-start;
+    .timeline-marker {
+        width: 20px;
+        /* Reducir el tamaño de los marcadores de la línea de tiempo */
+        height: 20px;
     }
 
-    .product-imagess {
-        margin-bottom: 10px;
-        /* Espacio entre la imagen y los detalles del producto en móvil */
+    .timeline-time {
+        font-size: 12px;
+        /* Reducir el tamaño de fuente en la línea de tiempo */
     }
-    .tracking-title{
-        margin-left: 0;
+
+    .product-namen {
+        font-size: 14px;
+        /* Reducir el tamaño de fuente del nombre del producto */
+    }
+
+    .product-quantity {
+        font-size: 12px;
+        /* Reducir el tamaño de fuente de la cantidad del producto */
     }
 }
