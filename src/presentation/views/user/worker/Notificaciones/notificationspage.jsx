@@ -45,20 +45,27 @@ function NotificationsPage() {
             const requestsWithProductDetails = await Promise.all(data.map(async request => {
                 const productDetails = await getProductById(request.productId);
                 const userDetails = await getUserProfileByEmail(request.userEmail);
+
+                // Asumiendo que `request.requestedAt` es una cadena en formato ISO
+                const requestedAtDate = new Date(request.requestedAt); // Convierte la cadena ISO a un objeto Date
+                const formattedRequestedAt = requestedAtDate.toLocaleString(); // Formatea la fecha localmente
+
                 return {
                     ...request,
                     productName: productDetails.product_name,
                     productDescription: productDetails.description,
                     productImage: productDetails.pictures,
                     userPhone: userDetails.numero,
-                    requestedAt: new Date(request.requestedAt.seconds * 1000).toLocaleString()
+                    requestedAt: formattedRequestedAt
                 };
             }));
             setReturnRequests(requestsWithProductDetails);
+            console.log(requestsWithProductDetails);
         } catch (error) {
             console.error("Error fetching return requests:", error);
         }
     };
+
 
 
     const handleAccept = async (orderId) => {
@@ -122,7 +129,7 @@ function NotificationsPage() {
                                         <p className="order-id"><strong>Order ID:</strong> {order.id}</p>
                                         <p className="order-total"><strong>Total:</strong> Bs {order.totalPrice.toFixed(2)}</p>
                                         <p className="order-time"><strong>Tiempo Ordenado:</strong> {order.createdAt}</p>
-                                        <p className="order-address"><strong>Delivery Address:</strong> {order.deliveryAddress}</p>
+                                        <p className="order-address"><strong>Direccion:</strong> {order.deliveryAddress}</p>
                                         <button className="button accept-button" onClick={() => handleAccept(order.id)}>Aceptar orden</button>
                                     </div>
                                 </li>
@@ -139,7 +146,7 @@ function NotificationsPage() {
                                     <div className="return-details">
                                         <p className="return-id"><strong>Orden ID:</strong> {request.id}</p>
                                         <p className="return-total"><strong>Total:</strong> Bs{request.totalPrice.toFixed(2)}</p>
-                                        <p className="return-time"><strong>Requested At:</strong> {new Date(request.requestedAt).toLocaleString()}</p>
+                                        <p className="return-time"><strong>Fecha:</strong>{request.requestedAt}</p>
                                         <p className="return-email"><strong>Email:</strong> {request.userEmail}</p>
                                         <p className="return-address"><strong>Direccion:</strong> {request.deliveryAddress}</p>
                                         <div className="return-products">
