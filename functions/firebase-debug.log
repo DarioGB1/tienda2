@@ -11,3 +11,21 @@
 [debug] [2024-06-21T08:01:08.328Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
 [debug] [2024-06-21T08:01:09.496Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
 [debug] [2024-06-21T08:01:09.497Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[debug] [2024-06-24T20:38:29.811Z] ----------------------------------------------------------------------
+[debug] [2024-06-24T20:38:29.814Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\GAMER\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only functions
+[debug] [2024-06-24T20:38:29.814Z] CLI Version:   13.8.0
+[debug] [2024-06-24T20:38:29.814Z] Platform:      win32
+[debug] [2024-06-24T20:38:29.815Z] Node Version:  v20.11.1
+[debug] [2024-06-24T20:38:29.815Z] Time:          Mon Jun 24 2024 16:38:29 GMT-0400 (hora de Bolivia)
+[debug] [2024-06-24T20:38:29.815Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2024-06-24T20:38:29.899Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2024-06-24T20:38:29.900Z] > authorizing via signed-in user (josealem03@gmail.com)
+[debug] [2024-06-24T20:38:29.900Z] [iam] checking project tienda-fa7e8 for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]
+[debug] [2024-06-24T20:38:29.903Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/tienda-fa7e8:testIamPermissions [none]
+[debug] [2024-06-24T20:38:29.903Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/tienda-fa7e8:testIamPermissions x-goog-quota-user=projects/tienda-fa7e8
+[debug] [2024-06-24T20:38:29.903Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/tienda-fa7e8:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-06-24T20:38:31.799Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/tienda-fa7e8:testIamPermissions 200
+[debug] [2024-06-24T20:38:31.799Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/tienda-fa7e8:testIamPermissions {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get"]}
+[debug] [2024-06-24T20:38:31.800Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/tienda-fa7e8/serviceAccounts/tienda-fa7e8@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2024-06-24T20:38:31.800Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/tienda-fa7e8/serviceAccounts/tienda-fa7e8@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}

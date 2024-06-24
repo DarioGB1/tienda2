@@ -141,7 +141,7 @@ exports.sendDeliveryConfirmation = functions.firestore.document("orders/{orderId
         </div>
         <div class="content">
           <p>Hola, tu pedido con ID <strong>${orderId}</strong> ha sido entregado exitosamente.</p>
-          <a href="https://tu-website.com/pedidos/${orderId}" class="button">Ver Detalle del Pedido</a>
+          <a href="https://tienda-fa7e8.web.app/orders/${orderId}" class="button">Ver Detalle del Pedido</a>
         </div>
         <div class="footer">
           <p>Gracias por comprar con nosotros. Esperamos verte pronto.</p>
