@@ -6,8 +6,7 @@ import { TailSpin } from 'react-loader-spinner';
 import './home.css';
 import { db } from '../../infraestructure/firebase--config.js';
 import { collection, getDocs, } from 'firebase/firestore';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+
 
 const Home = React.memo(({ productos, addtoCart }) => {
     const [recentProducts, setRecentProducts] = useState([]);
@@ -169,7 +168,6 @@ const Home = React.memo(({ productos, addtoCart }) => {
                     </div>
                 </div>
             </div>
-            <ToastContainer position="bottom-center" />
         </div>
     );
 }
