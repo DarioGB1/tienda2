@@ -88,8 +88,8 @@ const Carousel = React.memo (() => {
                 }
             </ol>
 
-            <span className="cascade-slider_arrow cascade-slider_arrow-left" data-action="prev" onClick={() => scrollToImage('prev')}>&#10092;</span>
-            <span className="cascade-slider_arrow cascade-slider_arrow-right" data-action="next" onClick={() => scrollToImage('next')}>&#10093;</span>
+            <span className="cascade-slider_arrow cascade-slider_arrow-left" data-action="next" onClick={() => scrollToImage('next')}>&#10092;</span>
+            <span className="cascade-slider_arrow cascade-slider_arrow-right" data-action="prev" onClick={() => scrollToImage('prev')}>&#10093;</span>
         </div>
     );
 }
