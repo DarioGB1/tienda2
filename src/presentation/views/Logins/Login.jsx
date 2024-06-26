@@ -7,7 +7,7 @@ import {
     signInWithEmailAndPassword,
     GoogleAuthProvider,
     FacebookAuthProvider,
-    signInWithRedirect,
+    signInWithPopup,
     getRedirectResult
 } from 'firebase/auth';
 import { getUserProfile, createUser } from '../../../infraestructure/api/user';
@@ -85,12 +85,34 @@ function Login() {
 
     const handleSignInWithGoogle = () => {
         setLoading(true);
-        signInWithRedirect(auth, new GoogleAuthProvider());
+        signInWithPopup(auth, new GoogleAuthProvider())
+            .then((result) => {
+                // Procesar el perfil del usuario después del inicio de sesión exitoso
+                manageUserProfile(result.user);
+            })
+            .catch((error) => {
+                console.error("Google Sign In Error:", error);
+                toast.error(`Google Sign In Error: ${error.message}`);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     const handleSignInWithFacebook = () => {
         setLoading(true);
-        signInWithRedirect(auth, new FacebookAuthProvider());
+        signInWithPopup(auth, new FacebookAuthProvider())
+            .then((result) => {
+                // Procesar el perfil del usuario después del inicio de sesión exitoso
+                manageUserProfile(result.user);
+            })
+            .catch((error) => {
+                console.error("Facebook Sign In Error:", error);
+                toast.error(`Facebook Sign In Error: ${error.message}`);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
     };
 
     return (
