@@ -6,5 +6,6 @@ export default function Home() {
      return <div className='container'>
          <Carousel/>
 
+         <h1>Tienda E-commerce</h1>
      </div>
 }
